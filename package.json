@@ -7,13 +7,17 @@
     "note": "./index.js"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
   },
   "keywords": [],
   "author": "karim",
   "license": "ISC",
   "type": "module",
   "dependencies": {
+    "open": "^11.0.0",
     "yargs": "^18.0.0"
+  },
+  "devDependencies": {
+    "jest": "^30.3.0"
   }
 }

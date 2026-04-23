@@ -14,7 +14,7 @@ export async function saveDB(db) {
   return db;
 }
 
-export async function insert(note) {
+export async function insertDB(note) {
   const db = await getDB();
 
   db.notes.push(note);

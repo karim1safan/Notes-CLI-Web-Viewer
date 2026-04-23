@@ -1,4 +1,4 @@
-import { getDB, insert, saveDB } from "./db.js";
+import { getDB, insertDB, saveDB } from "./db.js";
 
 // 1. Create
 export async function newNote(note, tags) {
@@ -8,7 +8,7 @@ export async function newNote(note, tags) {
     id: Date.now(),
   };
 
-  await insert(data);
+  await insertDB(data);
   return data; // returns the newly created note
 }
 
@@ -32,7 +32,7 @@ export async function findNotes(filter) {
 // 4. Delete a note
 export async function removeNote(id) {
   const notes = await getAllNotes();
-  const match = notes.find((id) => note.id === id); // check if the note in db.json or not
+  const match = notes.find((note) => note.id === id); // check if the note in db.json or not
 
   if (match) {
     const newNotes = notes.filter((note) => note.id !== id);

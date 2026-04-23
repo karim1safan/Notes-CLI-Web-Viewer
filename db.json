@@ -2,11 +2,18 @@
   "notes": [
     {
       "tags": [
-        "sports",
-        "gym"
+        "sleep"
       ],
-      "content": "go to gym",
-      "id": 1776905194790
+      "content": "sleeping",
+      "id": 1776973747971
+    },
+    {
+      "tags": [
+        "study",
+        "work"
+      ],
+      "content": "studying course",
+      "id": 1776973771362
     }
   ]
 }

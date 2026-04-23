@@ -8,16 +8,7 @@ import {
   removeAllNotes,
   removeNote,
 } from "./notes.js";
-
-// TODO:
-// 1. new <note>
-// 2. all
-// 3. remove <id>
-// 4. find <filter>
-// 5. clean
-// 6. web [port] => display notes in web
-
-// <note>, <id> and <filter> are positional
+import { start } from "./server.js";
 
 function listNotes(notes) {
   notes.forEach((note) => {
@@ -77,7 +68,12 @@ yargs(hideBin(process.argv))
     },
     async (argv) => {
       const notes = await findNotes(argv.filter);
-      listNotes(notes);
+
+      if (!notes.length) {
+        console.log("No notes with this filter");
+      } else {
+        listNotes(notes);
+      }
     },
   )
   .command(
@@ -108,13 +104,21 @@ yargs(hideBin(process.argv))
       console.log("All notes have been removed");
     },
   )
-  .command("web [port]", "display notes on the browser", (yargs) => {
-    return yargs.positional("port", {
-      type: "number",
-      default: 5000,
-      description: "port number listening",
-    });
-  })
+  .command(
+    "web [port]",
+    "launch website to see notes",
+    (yargs) => {
+      return yargs.positional("port", {
+        describe: "port to bind on",
+        default: 5000,
+        type: "number",
+      });
+    },
+    async (argv) => {
+      const notes = await getAllNotes();
+      start(notes, argv.port);
+    },
+  )
 
   .demandCommand(1)
   .parse();
