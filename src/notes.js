@@ -8,7 +8,7 @@ export async function newNote(note, tags) {
     id: Date.now(),
   };
 
-  await insert(note);
+  await insert(data);
   return data; // returns the newly created note
 }
 
@@ -23,6 +23,7 @@ export async function findNotes(filter) {
   const notes = await getAllNotes();
 
   // "learn javascript".includes("java") => true
+  // return a new array with matched filters
   return notes.filter((note) =>
     note.content.toLowerCase().includes(filter.toLowerCase()),
   );

@@ -1,4 +1,12 @@
 {
-  "notes": [],
-  "users": []
+  "notes": [
+    {
+      "tags": [
+        "sports",
+        "gym"
+      ],
+      "content": "go to gym",
+      "id": 1776905194790
+    }
+  ]
 }
