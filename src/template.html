@@ -3,9 +3,198 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Notes Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,700&family=Space+Grotesk:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #f8f4ea;
+        --ink: #1f2a2e;
+        --accent: #136f63;
+        --accent-soft: #def3ef;
+        --card: #fffcf4;
+        --card-border: #ddd3ba;
+        --chip: #f2ebda;
+        --shadow: 0 14px 34px rgba(26, 44, 49, 0.14);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: "Space Grotesk", "Segoe UI", sans-serif;
+        color: var(--ink);
+        background:
+          radial-gradient(circle at 10% 15%, #f9d38b 0, transparent 35%),
+          radial-gradient(circle at 80% 10%, #9cd7ce 0, transparent 38%),
+          radial-gradient(circle at 75% 75%, #f2b39b 0, transparent 30%),
+          linear-gradient(145deg, #f4efdf 0%, #f8f4ea 52%, #f1ebe0 100%);
+      }
+
+      .page {
+        width: min(1080px, 92vw);
+        margin: 2.2rem auto;
+        padding: 2rem;
+        border: 1px solid rgba(31, 42, 46, 0.1);
+        border-radius: 28px;
+        background: rgba(255, 252, 244, 0.82);
+        backdrop-filter: blur(8px);
+        box-shadow: var(--shadow);
+      }
+
+      .hero {
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
+        align-items: baseline;
+      }
+
+      h1 {
+        margin: 0;
+        font-family: "Newsreader", Georgia, serif;
+        font-size: clamp(2rem, 4vw, 3.2rem);
+        font-weight: 700;
+        letter-spacing: -0.02em;
+      }
+
+      .subtitle {
+        margin: 0.5rem 0 0;
+        max-width: 42ch;
+        line-height: 1.5;
+        opacity: 0.9;
+      }
+
+      .count {
+        padding: 0.55rem 0.95rem;
+        border-radius: 999px;
+        background: var(--accent-soft);
+        border: 1px solid #bae3dc;
+        color: #0b4f47;
+        font-weight: 700;
+        white-space: nowrap;
+      }
+
+      .notes-grid {
+        margin-top: 1.6rem;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 1rem;
+      }
+
+      .note {
+        position: relative;
+        padding: 1rem;
+        border: 1px solid var(--card-border);
+        border-radius: 16px;
+        background: var(--card);
+        box-shadow: 0 6px 16px rgba(31, 42, 46, 0.08);
+        transform: translateY(12px);
+        opacity: 0;
+        animation: rise 420ms ease forwards;
+      }
+
+      .note:nth-child(2) {
+        animation-delay: 70ms;
+      }
+
+      .note:nth-child(3) {
+        animation-delay: 130ms;
+      }
+
+      .note:nth-child(4) {
+        animation-delay: 190ms;
+      }
+
+      .note-content {
+        margin: 0;
+        line-height: 1.55;
+        font-size: 1rem;
+      }
+
+      .tags {
+        margin-top: 0.95rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.45rem;
+      }
+
+      .tag {
+        padding: 0.3rem 0.6rem;
+        border-radius: 999px;
+        background: var(--chip);
+        border: 1px solid #dfd3b5;
+        font-size: 0.82rem;
+        font-weight: 500;
+      }
+
+      .note-empty {
+        grid-column: 1 / -1;
+        text-align: center;
+        border-style: dashed;
+        background: repeating-linear-gradient(
+          -45deg,
+          #fff8e7,
+          #fff8e7 10px,
+          #fff3dc 10px,
+          #fff3dc 20px
+        );
+      }
+
+      .note-empty h2 {
+        margin: 0 0 0.4rem;
+        font-family: "Newsreader", Georgia, serif;
+        font-size: 1.8rem;
+      }
+
+      .note-empty p {
+        margin: 0;
+      }
+
+      @keyframes rise {
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+      @media (max-width: 720px) {
+        .page {
+          margin: 1rem auto;
+          padding: 1.1rem;
+          border-radius: 20px;
+        }
+
+        .hero {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .count {
+          margin-top: 0.3rem;
+        }
+      }
+    </style>
   </head>
   <body>
-    <div class="notes">{{ notes }}</div>
+    <main class="page">
+      <header class="hero">
+        <div>
+          <h1>Notes Dashboard</h1>
+          <p class="subtitle">
+            Your command-line notes, now in a visual board that is easy to scan.
+          </p>
+        </div>
+        <p class="count">{{ count }} total</p>
+      </header>
+
+      <section class="notes-grid">{{ notes }}</section>
+    </main>
   </body>
 </html>

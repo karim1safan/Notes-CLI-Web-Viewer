@@ -4,7 +4,7 @@
       "tags": [
         "sleep"
       ],
-      "content": "sleeping",
+      "content": "sleeping early to fix schedule",
       "id": 1776973747971
     },
     {
@@ -12,8 +12,112 @@
         "study",
         "work"
       ],
-      "content": "studying course",
+      "content": "studying React hooks",
       "id": 1776973771362
+    },
+    {
+      "tags": [
+        "health",
+        "fitness"
+      ],
+      "content": "went to the gym and did cardio",
+      "id": 1776973801123
+    },
+    {
+      "tags": [
+        "study"
+      ],
+      "content": "watched a JavaScript tutorial",
+      "id": 1776973859987
+    },
+    {
+      "tags": [
+        "personal"
+      ],
+      "content": "called a friend after a long time",
+      "id": 1776973902234
+    },
+    {
+      "tags": [
+        "work"
+      ],
+      "content": "finished backend API endpoint",
+      "id": 1776973956678
+    },
+    {
+      "tags": [
+        "study",
+        "frontend"
+      ],
+      "content": "built a small project using Vite",
+      "id": 1776974004455
+    },
+    {
+      "tags": [
+        "idea"
+      ],
+      "content": "create a note-taking app with tags filter",
+      "id": 1776974053321
+    },
+    {
+      "tags": [
+        "bug",
+        "work"
+      ],
+      "content": "fixed login issue with JWT token",
+      "id": 1776974107789
+    },
+    {
+      "tags": [
+        "learning"
+      ],
+      "content": "read about async/await in depth",
+      "id": 1776974159999
+    },
+    {
+      "tags": [
+        "fun"
+      ],
+      "content": "watched a movie",
+      "id": 1776974201234
+    },
+    {
+      "tags": [
+        "study",
+        "backend"
+      ],
+      "content": "practiced Node.js file system module",
+      "id": 1776974255678
+    },
+    {
+      "tags": [
+        "planning"
+      ],
+      "content": "organized tasks for the week",
+      "id": 1776974300001
+    },
+    {
+      "tags": [
+        "urgent",
+        "work"
+      ],
+      "content": "deploy project before deadline",
+      "id": 1776974352222
+    },
+    {
+      "tags": [
+        "random"
+      ],
+      "content": "just writing random thoughts",
+      "id": 1776974403333
+    },
+    {
+      "tags": [
+        "study",
+        "work"
+      ],
+      "content": "studying course",
+      "id": 1776978431321
     }
   ]
 }

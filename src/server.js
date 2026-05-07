@@ -9,15 +9,24 @@ export const interpolate = (html, data) => {
 };
 
 export const formatNotes = (notes) => {
+  if (!notes.length) {
+    return `
+      <article class="note note-empty">
+        <h2>No notes yet</h2>
+        <p>Add your first note from the terminal to see it here.</p>
+      </article>
+    `;
+  }
+
   return notes
     .map((note) => {
       return `
-      <div class="note">
-        <p>${note.content}</p>
+      <article class="note">
+        <p class="note-content">${note.content}</p>
         <div class="tags">
           ${note.tags.map((tag) => `<span class="tag">${tag}</span>`).join("")}
         </div>
-      </div>
+      </article>
     `;
     })
     .join("\n");
@@ -27,9 +36,12 @@ export const createServer = (notes) => {
   return http.createServer(async (req, res) => {
     const HTML_PATH = new URL("./template.html", import.meta.url).pathname;
     const template = await fs.readFile(HTML_PATH, "utf-8");
-    const html = interpolate(template, { notes: formatNotes(notes) });
+    const html = interpolate(template, {
+      notes: formatNotes(notes),
+      count: String(notes.length),
+    });
 
-    res.writeHead(200, { "Content-Type": "text/html; charset=utf-8" });
+    res.writeHead(200, { "Content-Type": "text/html" });
     res.end(html);
   });
 };
